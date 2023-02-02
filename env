@@ -1,9 +1,0 @@
-MONGO=mongodb+srv://Admin-Emmanuel:Nuwell123@todolist.pu5ghma.mongodb.net/ExaDB
-JWTPRIVATEKEY=qwroiuay03uqhrhhhhhhhhhhrgershehhwg3qyyyyyyyyyyy823qeq90r2t209y02222t2y2
-SALT=10
-
-MAILTRAP_USERNAME=5d7c80a89c3246
-MAILTRAP_PASSWORD=fdd23459e82ca2
-
-
-

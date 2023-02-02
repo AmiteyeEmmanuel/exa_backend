@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const transactionSchema = new mongoose.Schema({
-    prior: {
+    method: {
         type:String,
         required:true
     },
