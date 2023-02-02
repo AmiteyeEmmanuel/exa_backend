@@ -1,0 +1,34 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+    "firstName":"John",
+    "lastName":"Michael",
+    "email":"John5@gmail.com",
+    "country":"Nigeria",
+    "gender":"male",
+    "password":"blackKing"
+}
+
+const accountSchema = require("../transactions/Deposit/AccountSchema");
+
+const depositAmount = (accountNo, amount) => {
+    accountSchema.findOne({accountNo:accountNo},
+        (err, data)=> {
+            if(err || data == ""){
+                return new Error("failed to deposit")
+            }else {
+                accountSchema.findOneAndUpdate({accountNo:accountNo},
+                    {
+                        "$set": {
+                            balance : data.balance + amount
+                        }
+                    },
+                     (err) => {
+                        if(err){
+                            return new Error("failed to deposit")
+                        }
+                     })
+            }
+        })
+}
