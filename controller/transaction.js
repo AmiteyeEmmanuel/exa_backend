@@ -4,10 +4,10 @@ import transactionSchema from "../models/transactionSchema.js";
   
   export const deposit = async(req, res, next)=> {
     try {
-    const { prior, amount, accountNo} = req.body
+    const { method, amount, accountNo} = req.body
   
      const newTransaction = new transactionSchema({
-        prior:prior,
+        method:method,
         transType: "CREDIT",
         amount:amount,
         date: new Date().toLocaleDateString(),
@@ -24,10 +24,10 @@ import transactionSchema from "../models/transactionSchema.js";
   
   export const withdraw = async(req, res, next)=> {
     try {
-    const { prior, amount, accountNo} = req.body
+    const { method, amount, accountNo} = req.body
   
      const withTrans = new transactionSchema({
-        prior:prior,
+        method:method,
         transType: "DEBIT",
         amount:amount,
         date: new Date().toLocaleDateString(),
