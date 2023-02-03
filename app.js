@@ -7,6 +7,7 @@ import userRoute from "./routes/users.js";
 import depositRoute from "./routes/transaction.js";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import cors from  "cors";
 const app = express();
 dotenv.config();
 
@@ -43,7 +44,8 @@ mongoose.connection.on("Connected", () =>{
 
 start()
 
-app.use(cookieParser())
+app.use(cookieParser());
+app.use(cors());
 app.use(express.json())
 
 
