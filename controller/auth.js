@@ -73,7 +73,7 @@ export const login = async(req, res, next)=> {
   export const verifyEmail = async (req, res, next) => {
     try {
       const {userId, otp} = req.body
-      if(!userId || !otp.trim()) return next(createError(404, "Invalid request, missing parameter!")) ;
+      if(!userId || !otp) return next(createError(404, "Invalid request, missing parameter!")) ;
 
       if (!isValidObjectId(userId)) return next(createError(400, "Invalid user Id!"));
 
