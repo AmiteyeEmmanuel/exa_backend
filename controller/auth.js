@@ -12,6 +12,7 @@ import nodemailer from "nodemailer";
 import { emailPlain, generateOTP, generateOTPTemp, mailTransport } from "../utils/mail.js";
 
 import { isValidObjectId } from "mongoose";
+import { createError } from "../utils/error.js";
 
 export const register = async(req, res, next)=> {
   try {
@@ -70,6 +71,45 @@ export const login = async(req, res, next)=> {
   } 
 
 
+
+  // export const verifyEmail = async (req, res, next) => {
+  //   try {
+  //     const {userId, otp} = req.body
+  //     if(!userId || otp.trim()) return (createError(res, 'Error Invalid. missing parameters!'));
+
+  //     if(!isValidObjectId(userId)) return (createError(res, "invalid user id!"));
+
+  //     const user = await User.findById(userId)
+  //     if(!user) return (createError(res, 'sorry, user not found!'));
+
+  //     if(user.verified) return (createError(res, 'This account is ready verified!'));
+
+  //     const token = await userVerification.findOne({Owner: user._id})
+  //     if(!token) return (createError(res, 'Sorry, user not found!'));
+
+  //     const isMatched = await token.compareToken(otp)
+  //     if(!isMatched) return (createError(res, 'Please provide a valid Token!'));
+
+  //     user.verified = true;
+
+  //     await userVerification.findByIdAndDelete(token._id);
+  //     await user.save()
+
+  //     mailTransport().sendMail({
+  //       from: "ExaRealEstate.com",
+  //       to: user.email,
+  //       subject: "verify your email account",
+  //       html:  emailPlain("Email Verified Successfully", "Thanks for connecting with us"),
+  //     });
+
+  //     res.json({success : true, message: "Your email is verified."})
+
+  //   }catch(err){
+  //    next(err)
+  //   }
+  // }
+
+
   export const verifyEmail = async (req, res, next) => {
     try {
       const {userId, otp} = req.body
@@ -95,7 +135,7 @@ export const login = async(req, res, next)=> {
 
      mailTransport().sendMail({
       from: "noreply@gmail.com",
-      to:  req.body.user.email,
+      to:  user.email,
       subject: "Welcome",
       html:  emailPlain("Email Verification Completed", "Thank you, You can login now"),
     });
@@ -106,3 +146,6 @@ export const login = async(req, res, next)=> {
      next(err)
     }
   }
+
+
+  
