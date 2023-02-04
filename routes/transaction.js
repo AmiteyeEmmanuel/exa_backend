@@ -1,8 +1,10 @@
 import express from "express";
-import { deposit } from "../controller/transaction.js";
+import { deposit, withdraw } from "../controller/transaction.js";
 
 const router = express.Router();
 
 router.post("/deposit", deposit)
+
+router.post("/withdraw", withdraw);
 
 export default router

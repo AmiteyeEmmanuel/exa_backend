@@ -43,7 +43,7 @@ export const register = async(req, res, next)=> {
       html:  generateOTPTemp(OTP),
     })
 
-    res.status(200).send("User has been created.")
+    res.status(200).send(newUser)
   } catch(err){
     next(err)
   }
@@ -68,7 +68,6 @@ export const login = async(req, res, next)=> {
       next(err)
     }
   } 
-
 
 
   export const verifyEmail = async (req, res, next) => {
