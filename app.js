@@ -7,6 +7,7 @@ import userRoute from "./routes/users.js";
 import depositRoute from "./routes/transaction.js";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import multer from "multer";
 import cors from  "cors";
 const app = express();
 dotenv.config();

@@ -16,15 +16,18 @@ const transactionSchema = new mongoose.Schema({
     date: {
         type:String,
         required:true,
-    }, 
+    },
+    receipt: {
+        type: [String],
+        required:true
+    },
+    gitCard: {
+        type: String,
+    },
     time: {
         type:String,
         required:true,
-    },
-    accountNo: {
-        type:Number,
-        required:true,
-    }, 
+    }
     
 },{timestamps:true}
 );
