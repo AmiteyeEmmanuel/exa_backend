@@ -17,7 +17,7 @@ import transactionSchema from "../models/transactionSchema.js";
     })
   
       await newTransaction.save()
-      res.status(200).send("Successful")
+      res.status(200).send(newTransaction)
     } catch(err){
       next(err)
     }
@@ -36,7 +36,7 @@ import transactionSchema from "../models/transactionSchema.js";
     })
   
       await withTrans.save()
-      res.status(200).send("Successful")
+      res.status(200).send(withTrans)
     } catch(err){
       next(err)
     }
